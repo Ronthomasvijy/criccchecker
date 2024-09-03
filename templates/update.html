@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url("https://www.shutterstock.com/image-vector/night-cricket-stadium-illustration-vector-600nw-2160100275.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            color: #333;
+        }
+
+        header{
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        section
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin:auto;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        h1, h2{
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .user_w{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px;
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+           
+        }
+        label{
+            margin: 20px 0;
+            padding: 10px;
+            /* background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px; */
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        select
+        {
+            margin: 20px 0;
+            padding: 10px;
+            /* background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px; */
+            box-shadow: 10px 8px 10px rgb(81, 80, 80); 
+        }
+        button
+        {
+            margin: 20px 0;
+            padding: 10px;
+            /* background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px; */
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        input{
+            margin: 20px 0;
+            padding: 10px;
+        }
+        #team_name
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:space-between;
+            gap: 40px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        #scores
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        #ovs
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        #submitt
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:space-between;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 10px 8px 10px rgb(81, 80, 80);
+        }
+        /*.project:hover{
+            border:solid,rgb(81, 80, 80);
+            border-width: 0.5px;
+            box-shadow: -10px -8px 10px rgb(81, 80, 80);
+        } */
+        table
+        {
+            /* border: solid black; */
+            margin: 20px 0; /* Add margin above and below the table */
+            padding:1%;
+        }
+        td, th {
+            border: 1px solid #ddd; /* Light gray border */
+            padding: 10px; /* Padding inside cells */
+            text-align: left; /* Align text to the left */
+        }
+        
+        /* Style for table header */
+        th {
+            background-color: #f4f4f4; /* Light gray background for headers */
+            font-weight: bold; /* Make header text bold */
+            font-family:"Times New Roman", Times, serif;
+        }
+        
+        /* Style for alternating row colors */
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light gray background for even rows */
+            background-color: #b4bde7;
+        }
+        tr:nth-child(odd) {
+            background-color: #a0b0e0; /* Light gray background for even rows */
+        }
+        
+        /* Style for the first row (if it is a header) */
+        tr:first-child {
+            background: linear-gradient(to bottom,rgb(50, 49, 49),grey); /* Green background for header row */
+            color: white; /* White text color for header */
+            /* background-color: #a0b0e0; */
+        }
+        footer{
+            text-align: center;
+            background-color: #333;
+            padding: 3px;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="projects">
+        <div id="tableupdates_here" class="tableupdates_here">
+            <!-- Updated Table will be populated here -->
+        </div>
+        <div id="rem_here" class="rem_here">
+            <!-- Remaining matches and forms will be populated here -->
+        </div>
+    </section>
+
+    <script>
+        let rem_matches;
+        let cur_result2_2;
+        let date_selected;
+        let matchindex;
+        let win;
+        let first_bat;
+        let second_bat;
+        let score_1;
+        let score_2;
+        let overs_1;
+        let overs_2;
+        window.onload = function() 
+        {
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedDate = urlParams.get('selected_date');
+
+            if (selectedDate) 
+            {
+                date_selected=selectedDate;
+                fetch(`/newpage/get_updates?selected_date=${encodeURIComponent(selectedDate)}`, {
+                    method: 'GET'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    rem_matches = data.rem_matches;
+                    cur_result2_2 = data.cur_result2_2;
+
+                    renderTable(data.cur_result);
+                    const remDiv = document.getElementById('rem_here');
+                    remDiv.innerHTML = '';  // Clear previous forms
+                    render_radio_button(0);
+                    // renderMatchForms();
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+        function renderTable(tableData) 
+        {
+            const resultDiv = document.getElementById('tableupdates_here');
+            resultDiv.innerHTML = '';  // Clear previous results
+
+            if (tableData.length > 0) 
+            {
+                const table = document.createElement('table');
+                const numRows = tableData[0].length;
+
+                // Create rows
+                for (let i = 0; i < numRows; i++)
+                {
+                    const tr = document.createElement('tr');
+                    tableData.forEach(col => {
+                        const td = document.createElement('td');
+                        td.textContent = col[i];
+                        tr.appendChild(td);
+                    });
+                    table.appendChild(tr);
+                }
+                resultDiv.appendChild(table); // Append the table to the result div
+            } 
+            else 
+            {
+                const newmessage = document.createElement('p');
+                newmessage.textContent = `Please select a date where at least one match is played by each team.`;
+                resultDiv.appendChild(newmessage);
+            }
+        }
+
+
+
+
+
+        function render_radio_button(matchindex)
+        {
+            const remDiv = document.getElementById('rem_here');
+            // remDiv.innerHTML = '';  // Clear previous forms
+
+
+            const userDiv = document.createElement('div');
+            userDiv.id = `user_w_${matchindex}`;
+            userDiv.className = 'user_w';
+
+            const usernewDiv = document.createElement('div');
+            usernewDiv.id = `user_new_${matchindex}`;
+            userDiv.appendChild(usernewDiv)
+
+            //next match session
+            const next_upcoming=document.createElement('div');
+            next_upcoming.id= `next_up_coming_${matchindex}`;
+            const match_here=document.createElement('p');
+            match_here.textContent = `${rem_matches[1][matchindex]} V/S ${rem_matches[3][matchindex]}.`;
+            next_upcoming.appendChild(match_here);
+            userDiv.appendChild(next_upcoming);
+            remDiv.appendChild(userDiv);
+
+
+
+
+
+
+            //match abadoned section
+            const flag_value= document.createElement('div')
+            flag_value.id= 'flag';
+            const flag_label1 = document.createElement('label');
+            flag_label1.textContent = "match abadoned : ";
+            const flag_input1 = document.createElement('input');
+            flag_input1.type = 'radio';
+            flag_input1.name = 'matchstatus';
+            flag_input1.value = 'abandoned';
+            flag_label1.appendChild(flag_input1)
+            const flag_label2 = document.createElement('label');
+            flag_label2.textContent = "match occured : ";
+            const flag_input2 = document.createElement('input');
+            flag_input2.type = 'radio';
+            flag_input2.name = 'matchstatus';
+            flag_input2.value = 'occurred';
+            flag_label2.appendChild(flag_input2)
+            flag_value.appendChild(flag_label1)
+            flag_value.appendChild(flag_label2)
+            userDiv.appendChild(flag_value);
+            remDiv.appendChild(userDiv);
+            flag_input1.addEventListener('change', function(event) {
+                handleRadioButtonChange(event.target.value,matchindex);
+            });
+
+            flag_input2.addEventListener('change', function(event) {
+                handleRadioButtonChange(event.target.value,matchindex);
+            });
+        }
+
+
+        function handleRadioButtonChange(value,matchindex) 
+        {
+            console.log('Selected match status:', value);
+            if (value==='abandoned')
+            {
+                const usernewDiv=document.getElementById(`user_new_${matchindex}`);
+                usernewDiv.innerHTML='';
+
+
+                 // Submit Button
+                const submitDiv = document.createElement('div');
+                submitDiv.id = `submitt_${matchindex}`;
+                const submitButton = document.createElement('button');
+                submitButton.type = 'button';
+                submitButton.textContent = 'Submit';
+                submitButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    submitMatchData(value,matchindex);
+                });
+                submitDiv.appendChild(submitButton);
+                usernewDiv.appendChild(submitDiv);
+
+
+
+                // const serializedCurResult2_2 = JSON.stringify(cur_result2_2);
+                // const formData = `output_radio=${encodeURIComponent(0)}&matchindex=${encodeURIComponent(matchindex)}&first_bat=${encodeURIComponent(rem_matches[1][matchindex])}&second_bat=${encodeURIComponent(rem_matches[3][matchindex])}&score1=${encodeURIComponent(0)}&score2=${encodeURIComponent(0)}&overs1=${encodeURIComponent(0)}&overs2=${encodeURIComponent(0)}&cur_result2_2=${encodeURIComponent(serializedCurResult2_2)}`;
+                // // const formData = `output_radio=${encodeURIComponent(value)}`;
+                // fetch('/newpage/get_updates/submit_data', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/x-www-form-urlencoded',
+                //     },
+                //     body: formData
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     console.log('Success:', data);
+                //     // renderTable(data.updated_table); // Update the table with the new data
+                // })
+                // .catch(error => console.error('Error:', error));
+                // // You can add further logic based on the selected radio button here
+            }
+            else if(value==='occurred')
+            {
+                
+
+
+                const remDiv = document.getElementById('rem_here');
+            // remDiv.innerHTML = '';  // Clear previous forms
+
+                const userDiv = document.getElementById(`user_w_${matchindex}`);
+                // userDiv.id = `user_w_${matchindex}`;
+                // userDiv.className = 'user_w';
+                const usernewDiv=document.getElementById(`user_new_${matchindex}`);
+                usernewDiv.innerHTML='';
+                
+
+                // Team Name Section
+                const teamNameDiv = document.createElement('div');
+                teamNameDiv.id = `team_name_${matchindex}`;
+                const fbLabel = document.createElement('label');
+                fbLabel.textContent = "Select First batting team :";
+                const firstBatDropdown = document.createElement('select');
+                firstBatDropdown.id = `first_bat_${matchindex}`;
+                const teamname1 = document.createElement('option');
+                teamname1.value = rem_matches[1][matchindex];
+                teamname1.textContent = rem_matches[1][matchindex];
+                const teamname2 = document.createElement('option');
+                teamname2.value = rem_matches[3][matchindex];
+                teamname2.textContent = rem_matches[3][matchindex];
+                firstBatDropdown.appendChild(teamname1);
+                firstBatDropdown.appendChild(teamname2);
+                teamNameDiv.appendChild(fbLabel);
+                teamNameDiv.appendChild(firstBatDropdown);
+                usernewDiv.appendChild(teamNameDiv);
+
+
+                // Scores Section
+                const scoresDiv = document.createElement('div');
+                scoresDiv.id = `scores_${matchindex}`;
+                for (let i = 1; i <= 2; i++) {
+                    const textLabel = document.createElement('label');
+                    textLabel.textContent = `SCORE ${i}:`;
+                    const textField = document.createElement('input');
+                    textField.type = 'text';
+                    textField.id = `score${i}_${matchindex}`;
+                    scoresDiv.appendChild(textLabel);
+                    scoresDiv.appendChild(textField);
+                }
+                usernewDiv.appendChild(scoresDiv);
+
+                // Overs Section
+                const ovsDiv = document.createElement('div');
+                ovsDiv.id = `ovs_${matchindex}`;
+                for (let i = 1; i <= 2; i++) {
+                    const textLabel = document.createElement('label');
+                    textLabel.textContent = `OVERS ${i}:`;
+                    const textField = document.createElement('input');
+                    textField.type = 'text';
+                    textField.id = `overs${i}_${matchindex}`;
+                    ovsDiv.appendChild(textLabel);
+                    ovsDiv.appendChild(textField);
+                }
+                usernewDiv.appendChild(ovsDiv);
+
+                // Submit Button
+                const submitDiv = document.createElement('div');
+                submitDiv.id = `submitt_${matchindex}`;
+                const submitButton = document.createElement('button');
+                submitButton.type = 'button';
+                submitButton.textContent = 'Submit';
+                submitButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    submitMatchData(value,matchindex);
+                });
+                submitDiv.appendChild(submitButton);
+                usernewDiv.appendChild(submitDiv);
+
+                // remDiv.appendChild(userDiv);
+
+            }
+            // let output_radio;
+            // const formData = `output_radio=${encodeURIComponent(value)}`;
+
+            // Make a POST request to submit the form data
+        }
+
+
+
+
+        // function renderMatchForms() {
+        //     const remDiv = document.getElementById('rem_here');
+        //     remDiv.innerHTML = '';  // Clear previous forms
+
+        //     for (let matchindex = 0; matchindex < rem_matches[0].length; matchindex++) 
+        //     {
+        //         const userDiv = document.createElement('div');
+        //         userDiv.id = `user_w_${matchindex}`;
+        //         userDiv.className = 'user_w';
+
+        //         // Team Name Section
+        //         const teamNameDiv = document.createElement('div');
+        //         teamNameDiv.id = `team_name_${matchindex}`;
+        //         const fbLabel = document.createElement('label');
+        //         fbLabel.textContent = "Select First batting team :";
+        //         const firstBatDropdown = document.createElement('select');
+        //         firstBatDropdown.id = `first_bat_${matchindex}`;
+        //         const teamname1 = document.createElement('option');
+        //         teamname1.value = rem_matches[1][matchindex];
+        //         teamname1.textContent = rem_matches[1][matchindex];
+        //         const teamname2 = document.createElement('option');
+        //         teamname2.value = rem_matches[3][matchindex];
+        //         teamname2.textContent = rem_matches[3][matchindex];
+        //         firstBatDropdown.appendChild(teamname1);
+        //         firstBatDropdown.appendChild(teamname2);
+        //         teamNameDiv.appendChild(fbLabel);
+        //         teamNameDiv.appendChild(firstBatDropdown);
+        //         userDiv.appendChild(teamNameDiv);
+
+
+        //         // Scores Section
+        //         const scoresDiv = document.createElement('div');
+        //         scoresDiv.id = `scores_${matchindex}`;
+        //         for (let i = 1; i <= 2; i++) {
+        //             const textLabel = document.createElement('label');
+        //             textLabel.textContent = `SCORE ${i}:`;
+        //             const textField = document.createElement('input');
+        //             textField.type = 'text';
+        //             textField.id = `score${i}_${matchindex}`;
+        //             scoresDiv.appendChild(textLabel);
+        //             scoresDiv.appendChild(textField);
+        //         }
+        //         userDiv.appendChild(scoresDiv);
+
+        //         // Overs Section
+        //         const ovsDiv = document.createElement('div');
+        //         ovsDiv.id = `ovs_${matchindex}`;
+        //         for (let i = 1; i <= 2; i++) {
+        //             const textLabel = document.createElement('label');
+        //             textLabel.textContent = `OVERS ${i}:`;
+        //             const textField = document.createElement('input');
+        //             textField.type = 'text';
+        //             textField.id = `overs${i}_${matchindex}`;
+        //             ovsDiv.appendChild(textLabel);
+        //             ovsDiv.appendChild(textField);
+        //         }
+        //         userDiv.appendChild(ovsDiv);
+
+        //         // Submit Button
+        //         const submitDiv = document.createElement('div');
+        //         submitDiv.id = `submitt_${matchindex}`;
+        //         const submitButton = document.createElement('button');
+        //         submitButton.type = 'button';
+        //         submitButton.textContent = 'Submit';
+        //         submitButton.addEventListener('click', function(event) {
+        //             event.preventDefault();
+        //             submitMatchData(matchindex);
+        //         });
+        //         submitDiv.appendChild(submitButton);
+        //         userDiv.appendChild(submitDiv);
+
+        //         remDiv.appendChild(userDiv);
+        //     }
+        // }
+        // function handleRadioButtonChange(value) 
+        // {
+        //     console.log('Selected match status:', value);
+        //     // You can add further logic based on the selected radio button here
+        // }
+        function submitMatchData(vallue,matchindex) 
+        {
+            if (vallue==='abandoned')
+            {
+                const serializedCurResult2_2 = JSON.stringify(cur_result2_2);
+                const formData = `output_radio=${encodeURIComponent(0)}&matchindex=${encodeURIComponent(matchindex)}&first_bat=${encodeURIComponent(rem_matches[1][matchindex])}&second_bat=${encodeURIComponent(rem_matches[3][matchindex])}&score1=${encodeURIComponent(0)}&score2=${encodeURIComponent(0)}&overs1=${encodeURIComponent(0)}&overs2=${encodeURIComponent(0)}&cur_result2_2=${encodeURIComponent(serializedCurResult2_2)}&date_selected=${encodeURIComponent(date_selected)}`;
+                // const formData = `output_radio=${encodeURIComponent(value)}`;
+                fetch('/newpage/get_updates/submit_data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    rem_matches = data.rem_matches;
+                    cur_result2_2 = data.cur_result2_2;
+                    win=data.win;
+                    first_bat=data.first_bat;
+                    second_bat=data.second_bat;
+                    score_1=data.score1;
+                    score_2=data.score2;
+                    overs_1=data.overs1;
+                    overs_2=data.overs2;
+                    matchindex=data.matchindex;
+                    renderTable(data.cur_result);
+                    // const remDiv = document.getElementById('rem_here');
+                    // remDiv.innerHTML = '';  // Clear previous forms
+                    concrete_prev_match(win,first_bat,second_bat,score_1,score_2,overs_1,overs_2,matchindex-1,vallue);
+                    if (matchindex<rem_matches[0].length)
+                    {
+                        render_radio_button(matchindex);
+                    }
+                    //console.log('Success:', data);
+                    // renderTable(data.updated_table); // Update the table with the new data
+                })
+                .catch(error => console.error('Error:', error));
+                // You can add further logic based on the selected radio button here
+            }
+            else if(vallue==='occurred')
+            {
+                const firstBat = document.getElementById(`first_bat_${matchindex}`).value;
+                let secondBat
+                if (firstBat===rem_matches[1][matchindex])
+                {
+                    secondBat = rem_matches[3][matchindex];  // Assuming secondBat is fixed
+                }
+                else
+                {
+                    secondBat = rem_matches[1][matchindex]; 
+                }
+                // Assuming secondBat is fixed
+                const score1 = document.getElementById(`score1_${matchindex}`).value;
+                const score2 = document.getElementById(`score2_${matchindex}`).value;
+                const overs1 = document.getElementById(`overs1_${matchindex}`).value;
+                const overs2 = document.getElementById(`overs2_${matchindex}`).value;
+
+                // Create the request body as a URL-encoded string
+                const serializedCurResult2_2 = JSON.stringify(cur_result2_2);
+
+                const formData =  `output_radio=${encodeURIComponent(1)}&matchindex=${encodeURIComponent(matchindex)}&first_bat=${encodeURIComponent(firstBat)}&second_bat=${encodeURIComponent(secondBat)}&score1=${encodeURIComponent(score1)}&score2=${encodeURIComponent(score2)}&overs1=${encodeURIComponent(overs1)}&overs2=${encodeURIComponent(overs2)}&cur_result2_2=${encodeURIComponent(serializedCurResult2_2)}&date_selected=${encodeURIComponent(date_selected)}`;
+
+                // Make a POST request to submit the form data
+                fetch('/newpage/get_updates/submit_data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    rem_matches = data.rem_matches;
+                    cur_result2_2 = data.cur_result2_2;
+                    win=data.win;
+                    first_bat=data.first_bat;
+                    second_bat=data.second_bat;
+                    score_1=data.score1;
+                    score_2=data.score2;
+                    overs_1=data.overs1;
+                    overs_2=data.overs2;
+                    matchindex=data.matchindex;
+                    renderTable(data.cur_result);
+                    // const remDiv = document.getElementById('rem_here');
+                    // remDiv.innerHTML = '';  // Clear previous forms
+                    concrete_prev_match(win,first_bat,second_bat,score_1,score_2,overs_1,overs_2,matchindex-1,vallue);
+                    if (matchindex<rem_matches[0].length)
+                    {
+                        render_radio_button(matchindex);
+                    }
+                    
+                    //console.log('Success:', data);
+                    // renderTable(data.updated_table); // Update the table with the new data
+                    //console.log('Success:', data);
+                    // renderTable(data.updated_table); // Update the table with the new data
+                })
+                .catch(error => console.error('Error:', error));
+            }   
+
+
+            function concrete_prev_match(win,first_bat,second_bat,score_1,score_2,overs_1,overs_2,n,vallue)
+            {
+                const remDiv = document.getElementById('rem_here');
+                // remDiv.innerHTML = '';  // Clear previous forms
+
+                const usernewDiv=document.getElementById(`user_new_${n}`);
+                usernewDiv.innerHTML=''; 
+
+                const userDiv = document.getElementById(`user_w_${n}`);
+                userDiv.innerHTML='';
+                // userDiv.id = `user_w_${matchindex}`;
+                // userDiv.className = 'user_w';
+               
+                
+                if (vallue==='abandoned')
+                {
+                    const solidresult1=document.createElement('p');
+                    solidresult1.id=`solidresult1_${n}`;
+                    solidresult1.textContent = `Table updated according to given condition: `;
+                    const solidresult2=document.createElement('p');
+                    solidresult2.id=`solidresult2_${n}`;
+                    solidresult2.textContent='match abandoned and points divided equally';
+                    userDiv.appendChild(solidresult1);
+                    userDiv.appendChild(solidresult2);
+                    remDiv.appendChild(userDiv);
+                    // const solidresult3=document.createElement('p');
+                    // solidresult3.id=`solidresult3_${n}`;
+                    // const solidresult4=document.createElement('p');
+                    // solidresult4.id=`solidresult4_${n}`;
+                }
+                else if(vallue==='occurred')
+                {
+                    const solidresult1=document.createElement('p');
+                    solidresult1.id=`solidresult1_${n}`;
+                    solidresult1.textContent = `Table updated accordingly : `;
+                    const solidresult2=document.createElement('p');
+                    solidresult2.id=`solidresult2_${n}`;
+                    solidresult2.textContent=`${first_bat} scored ${score_1} in ${overs_1} overs`;
+                    const solidresult3=document.createElement('p');
+                    solidresult3.id=`solidresult3_${n}`;
+                    solidresult3.textContent=`${second_bat} scored ${score_2} in ${overs_2} overs`;
+                    const solidresult4=document.createElement('p');
+                    solidresult4.id=`solidresult4_${n}`;
+                    solidresult4.textContent=`${win} won the match`;
+                    userDiv.appendChild(solidresult1);
+                    userDiv.appendChild(solidresult2);
+                    userDiv.appendChild(solidresult3);
+                    userDiv.appendChild(solidresult4);
+                    remDiv.appendChild(userDiv);
+                }
+            }
+        }
+    </script>
+
+    <!-- <footer>
+        <section id="contact">
+            <p><i class="fa-regular fa-envelope fa-lg" style="color: #eb0000;"></i> : chasemaster18@yahahoo.com</p>
+        </section>
+        <p>Copyright&copy;2024 chasemaster</p>
+    </footer> -->
+</body>

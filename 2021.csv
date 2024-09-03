@@ -1,0 +1,61 @@
+match_no,match_date,team_name1,score1,overs_batted1,team_name2,score2,overs_batted2,target,victory,dls_affected
+1,2021-04-09,Mumbai Indians,159/9,20/20 ov,Royal Challengers Bangalore,160/8,20/20 ov,160,Royal Challengers Bangalore,False
+2,2021-04-10,Chennai Super Kings,188/7,20/20 ov,Delhi Capitals,190/3,18.4/20 ov,189,Delhi Capitals,False
+3,2021-04-11,Kolkata Knight Riders,187/6,20/20 ov,Sunrisers Hyderabad,177/5,20/20 ov,188,Kolkata Knight Riders,False
+4,2021-04-12,Punjab Kings,221/6,20/20 ov,Rajasthan Royals,217/7,20/20 ov,222,Punjab Kings,False
+5,2021-04-13,Mumbai Indians,152,20/20 ov,Kolkata Knight Riders,142/7,20/20 ov,153,Mumbai Indians,False
+6,2021-04-14,Royal Challengers Bangalore,149/8,20/20 ov,Sunrisers Hyderabad,143/9,20/20 ov,150,Royal Challengers Bangalore,False
+7,2021-04-15,Delhi Capitals,147/8,20/20 ov,Rajasthan Royals,150/7,19.4/20 ov,148,Rajasthan Royals,False
+8,2021-04-16,Punjab Kings,106/8,20/20 ov,Chennai Super Kings,107/4,15.4/20 ov,107,Chennai Super Kings,False
+9,2021-04-17,Mumbai Indians,150/5,20/20 ov,Sunrisers Hyderabad,137,19.4/20 ov,151,Mumbai Indians,False
+10,2021-04-18,Royal Challengers Bangalore,204/4,20/20 ov,Kolkata Knight Riders,166/8,20/20 ov,205,Royal Challengers Bangalore,False
+11,2021-04-18,Punjab Kings,195/4,20/20 ov,Delhi Capitals,198/4,18.2/20 ov,196,Delhi Capitals,False
+12,2021-04-19,Chennai Super Kings,188/9,20/20 ov,Rajasthan Royals,143/9,20/20 ov,189,Chennai Super Kings,False
+13,2021-04-20,Mumbai Indians,137/9,20/20 ov,Delhi Capitals,138/4,19.1/20 ov,138,Delhi Capitals,False
+14,2021-04-21,Punjab Kings,120,20/20 ov,Sunrisers Hyderabad,121/1,18.4/20 ov,121,Sunrisers Hyderabad,False
+15,2021-04-21,Chennai Super Kings,220/3,20/20 ov,Kolkata Knight Riders,202,19.1/20 ov,221,Chennai Super Kings,False
+16,2021-04-22,Rajasthan Royals,177/9,20/20 ov,Royal Challengers Bangalore,181/0,16.3/20 ov,178,Royal Challengers Bangalore,False
+17,2021-04-23,Mumbai Indians,131/6,20/20 ov,Punjab Kings,132/1,17.4/20 ov,132,Punjab Kings,False
+18,2021-04-24,Kolkata Knight Riders,133/9,20/20 ov,Rajasthan Royals,134/4,18.5/20 ov,134,Rajasthan Royals,False
+19,2021-04-25,Chennai Super Kings,191/4,20/20 ov,Royal Challengers Bangalore,122/9,20/20 ov,192,Chennai Super Kings,False
+20,2021-04-25,Delhi Capitals,159/4,20/20 ov,Sunrisers Hyderabad,159/7,20/20 ov,160,Delhi Capitals,False
+21,2021-04-26,Punjab Kings,123/9,20/20 ov,Kolkata Knight Riders,126/5,16.4/20 ov,124,Kolkata Knight Riders,False
+22,2021-04-27,Royal Challengers Bangalore,171/5,20/20 ov,Delhi Capitals,170/4,20/20 ov,172,Royal Challengers Bangalore,False
+23,2021-04-28,Sunrisers Hyderabad,171/3,20/20 ov,Chennai Super Kings,173/3,18.3/20 ov,172,Chennai Super Kings,False
+24,2021-04-29,Rajasthan Royals,171/4,20/20 ov,Mumbai Indians,172/3,18.3/20 ov,172,Mumbai Indians,False
+25,2021-04-29,Kolkata Knight Riders,154/6,20/20 ov,Delhi Capitals,156/3,16.3/20 ov,155,Delhi Capitals,False
+26,2021-04-30,Punjab Kings,179/5,20/20 ov,Royal Challengers Bangalore,145/8,20/20 ov,180,Punjab Kings,False
+27,2021-05-01,Chennai Super Kings,218/4,20/20 ov,Mumbai Indians,219/6,20/20 ov,219,Mumbai Indians,False
+28,2021-05-02,Rajasthan Royals,220/3,20/20 ov,Sunrisers Hyderabad,165/8,20/20 ov,221,Rajasthan Royals,False
+29,2021-05-02,Punjab Kings,166/6,20/20 ov,Delhi Capitals,167/3,17.4/20 ov,167,Delhi Capitals,False
+30,2021-09-19,Chennai Super Kings,156/6,20/20 ov,Mumbai Indians,136/8,20/20 ov,157,Chennai Super Kings,False
+31,2021-09-20,Royal Challengers Bangalore,92,20/20 ov,Kolkata Knight Riders,94/1,10/20 ov,93,Kolkata Knight Riders,False
+32,2021-09-21,Rajasthan Royals,185,20/20 ov,Punjab Kings,183/4,20/20 ov,186,Rajasthan Royals,False
+33,2021-09-22,Sunrisers Hyderabad,134/9,20/20 ov,Delhi Capitals,139/2,17.5/20 ov,135,Delhi Capitals,False
+34,2021-09-23,Mumbai Indians,155/6,20/20 ov,Kolkata Knight Riders,159/3,15.1/20 ov,156,Kolkata Knight Riders,False
+35,2021-09-24,Royal Challengers Bangalore,156/6,20/20 ov,Chennai Super Kings,157/4,18.1/20 ov,157,Chennai Super Kings,False
+36,2021-09-25,Delhi Capitals,154/6,20/20 ov,Rajasthan Royals,121/6,20/20 ov,155,Delhi Capitals,False
+37,2021-09-25,Punjab Kings,125/7,20/20 ov,Sunrisers Hyderabad,120/7,20/20 ov,126,Punjab Kings,False
+38,2021-09-26,Kolkata Knight Riders,171/6,20/20 ov,Chennai Super Kings,172/8,20/20 ov,172,Chennai Super Kings,False
+39,2021-09-26,Royal Challengers Bangalore,165/6,20/20 ov,Mumbai Indians,111,18.1/20 ov,166,Royal Challengers Bangalore,False
+40,2021-09-27,Rajasthan Royals,164/5,20/20 ov,Sunrisers Hyderabad,167/3,18.3/20 ov,165,Sunrisers Hyderabad,False
+41,2021-09-28,Delhi Capitals,127/9,20/20 ov,Kolkata Knight Riders,130/7,18.2/20 ov,128,Kolkata Knight Riders,False
+42,2021-09-28,Punjab Kings,135/6,20/20 ov,Mumbai Indians,137/4,19/20 ov,136,Mumbai Indians,False
+43,2021-09-29,Rajasthan Royals,149/9,20/20 ov,Royal Challengers Bangalore,153/3,17.1/20 ov,150,Royal Challengers Bangalore,False
+44,2021-09-30,Sunrisers Hyderabad,134/7,20/20 ov,Chennai Super Kings,139/4,19.4/20 ov,135,Chennai Super Kings,False
+45,2021-10-01,Kolkata Knight Riders,165/7,20/20 ov,Punjab Kings,168/5,19.3/20 ov,166,Punjab Kings,False
+46,2021-10-02,Mumbai Indians,129/8,20/20 ov,Delhi Capitals,132/6,19.1/20 ov,130,Delhi Capitals,False
+47,2021-10-02,Chennai Super Kings,189/4,20/20 ov,Rajasthan Royals,190/3,17.3/20 ov,190,Rajasthan Royals,False
+48,2021-10-03,Royal Challengers Bangalore,164/7,20/20 ov,Punjab Kings,158/6,20/20 ov,165,Royal Challengers Bangalore,False
+49,2021-10-03,Sunrisers Hyderabad,115/8,20/20 ov,Kolkata Knight Riders,119/4,19.4/20 ov,116,Kolkata Knight Riders,False
+50,2021-10-04,Chennai Super Kings,136/5,20/20 ov,Delhi Capitals,139/7,19.4/20 ov,137,Delhi Capitals,False
+51,2021-10-05,Rajasthan Royals,90/9,20/20 ov,Mumbai Indians,94/2,8.2/20 ov,91,Mumbai Indians,False
+52,2021-10-06,Sunrisers Hyderabad,141/7,20/20 ov,Royal Challengers Bangalore,137/6,20/20 ov,142,Sunrisers Hyderabad,False
+53,2021-10-07,Chennai Super Kings,134/6,20/20 ov,Punjab Kings,139/4,13/20 ov,135,Punjab Kings,False
+54,2021-10-07,Kolkata Knight Riders,171/4,20/20 ov,Rajasthan Royals,85,16.1/20 ov,172,Kolkata Knight Riders,False
+55,2021-10-08,Mumbai Indians,235/9,20/20 ov,Sunrisers Hyderabad,193/8,20/20 ov,236,Mumbai Indians,False
+56,2021-10-08,Delhi Capitals,164/5,20/20 ov,Royal Challengers Bangalore,166/3,20/20 ov,165,Royal Challengers Bangalore,False
+57,2021-10-10,Delhi Capitals,172/5,20/20 ov,Chennai Super Kings,173/6,19.4/20 ov,173,Chennai Super Kings,False
+58,2021-10-11,Royal Challengers Bangalore,138/7,20/20 ov,Kolkata Knight Riders,139/6,19.4/20 ov,139,Kolkata Knight Riders,False
+59,2021-10-13,Delhi Capitals,135/5,20/20 ov,Kolkata Knight Riders,136/7,19.5/20 ov,136,Kolkata Knight Riders,False
+60,2021-10-15,Chennai Super Kings,192/3,20/20 ov,Kolkata Knight Riders,165/9,20/20 ov,193,Chennai Super Kings,False

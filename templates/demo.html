@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url("https://www.shutterstock.com/image-vector/night-cricket-stadium-illustration-vector-600nw-2160100275.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            color: #333;
+        }
+
+        header{
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        section
+        {
+            margin:auto;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        h1, h2{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        /* #projects
+        {
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+        } */
+        .project{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgb(81, 80, 80);
+           
+        }
+        .output
+        {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgb(81, 80, 80);
+        }
+        select
+        {
+            /* border-radius: 50px,solid; */
+            /* margin-left: 10px;
+            margin-right: 10px; */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            border: none;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 1%;
+            padding-bottom: 1%; 
+        }
+        select:hover
+        {
+            border: none;
+            box-shadow:0px 0px 25px rgb(81, 80, 80) ;
+        }
+        .project:hover{
+            box-shadow: 0px 0px 25px rgb(81, 80, 80);
+        }
+        #result{
+            margin:10px;
+        }
+        #result2{
+            margin-left:10px;
+            margin-top: 20px;
+        }
+        #rem{
+            margin-left: 15px;
+            margin-top: 35px;
+        }
+        table
+        {
+            /* border: solid black; */
+            margin: 20px 0; /* Add margin above and below the table */
+            padding:1%;
+        }
+        td, th {
+            border: 1px solid #ddd; /* Light gray border */
+            padding: 10px; /* Padding inside cells */
+            text-align: left; /* Align text to the left */
+        }
+        
+        /* Style for table header */
+        th {
+            background-color: #f4f4f4; /* Light gray background for headers */
+            font-weight: bold; /* Make header text bold */
+            font-family:"Times New Roman", Times, serif;
+        }
+        
+        /* Style for alternating row colors */
+        tr:nth-child(even) {
+            background-color: #b4bde7; /* Light gray background for even rows */
+        }
+        tr:nth-child(odd) {
+            background-color: #a0b0e0; /* Light gray background for even rows */
+        }
+        /* Style for the first row (if it is a header) */
+        tr:first-child {
+            background: linear-gradient(to bottom,rgb(50, 49, 49),grey); /* Green background for header row */
+            color: white; /* White text color for header */
+        }
+        footer{
+            text-align: center;
+            background-color: #333;
+            padding: 3px;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section id="projects">
+
+        <div class="project">
+            <h1>SELECT A SEASON </h1>
+            <br>
+            <select id="contentSelect">
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            </select>
+            <br>
+        </div>
+    </section>
+    <div class="output">
+        <div id="result">
+        </div>
+        <div id="inneroutput">
+            <div id="result2">
+            </div>
+            <div id="rem">
+            </div>
+            <div id="remaining">
+            </div>
+            <div id="nextstep">
+            <div>
+        </div>   
+    </div>
+    <!-- <footer>
+        <section id="contact">
+            <p><i class="fa-regular fa-envelope fa-lg" style="color: #eb0000;"></i> : chasemaster18@yahahoo.com</p>
+        </section>
+        <p>Copyright&copy;2024 chasemaster</p>
+    </footer> -->
+    <script>
+        document.getElementById('contentSelect').addEventListener('change', function() 
+        {
+            var selectedValue = this.value;
+            if (selectedValue) 
+            {
+                fetch('/demotest/get_content', 
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'option=' + encodeURIComponent(selectedValue)
+                })
+                .then(response => response.json())
+                .then(data => 
+                {
+                    var resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = '';  // Clear previous results
+                    document.getElementById('remaining').innerHTML = ''; 
+                    if (data.result.length > 0) 
+                    {
+                        var table = document.createElement('table');
+                        var numRows = data.result[0].length; // Number of rows (assuming all lists are the same length)
+    
+                        // Create rows
+                        for (var i = 0; i < numRows; i++) 
+                        {
+                            var tr = document.createElement('tr');
+                            data.result.forEach(function(col) 
+                            {
+                                var td = document.createElement('td');
+                                td.textContent = col[i]; // Get the element at the current row index
+                                tr.appendChild(td);
+                            });
+                            table.appendChild(tr);
+                        }
+                        resultDiv.appendChild(table); // Append the table to the result div
+                    }
+                    var result2Div = document.getElementById('result2');
+                    result2Div.innerHTML = '';
+                    var remDiv = document.getElementById('rem');
+                    remDiv.innerHTML = '';
+                    document.getElementById('remaining').innerHTML = ''; 
+                    // Display the date range instruction message
+                    if (data.dates && data.dates.length === 4) 
+                    {
+                        var dateMessage = document.createElement('p');
+                        dateMessage.textContent = `Please select a date between ${data.dates[0]} and ${data.dates[1]}.`;
+                        result2Div.appendChild(dateMessage);
+                        var dateInput = document.createElement('input');
+                        dateInput.type = 'date';
+                        dateInput.id = 'mydate';
+                        dateInput.min = data.dates[0]; // Set the minimum selectable date
+                        dateInput.max = data.dates[1]; // Set the maximum selectable date
+                        remDiv.appendChild(dateInput);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                document.getElementById('result').innerHTML = '';  // Clear results if no value selected
+            }
+        });
+        document.getElementById('rem').addEventListener('change', function(event) 
+        {
+            if (event.target.id === 'mydate') 
+            {
+                var selectedDate = event.target.value;
+                if (selectedDate) 
+                {
+                    fetch('/demotest/get_content', 
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: 'date=' + encodeURIComponent(selectedDate)
+                    })
+                    .then(response => response.json())
+                    .then(data => 
+                    {
+                        var resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = '';  // Clear previous results
+    
+                        if (data.cur_result.length > 0) {
+                            var table = document.createElement('table');
+                            var numRows = data.cur_result[0].length; // Number of rows (assuming all lists are the same length)
+    
+                            // Create rows
+                            for (var i = 0; i < numRows; i++) 
+                            {
+                                var tr = document.createElement('tr');
+                                data.cur_result.forEach(function(col) 
+                                {
+                                    var td = document.createElement('td');
+                                    td.textContent = col[i]; // Get the element at the current row index
+                                    tr.appendChild(td);
+                                }); 
+                                table.appendChild(tr);
+                            }
+                            resultDiv.appendChild(table); // Append the table to the result div
+                        }
+                        else
+                        {
+                            var newmessage = document.createElement('p');
+                            newmessage.textContent = `Please select a date where atleast one match is played by each team`;
+                            resultDiv.appendChild(newmessage);
+                        }
+                        var remain = document.getElementById('remaining');
+                        remain.innerHTML = '';  // Clear previous results
+    
+                        if (data.rem_matches.length > 0) 
+                        {
+                            var table = document.createElement('table');
+                            var numRows = data.rem_matches[0].length; // Number of rows (assuming all lists are the same length)
+                            var tr= document.createElement('tr');
+                            var td= document.createElement('td');
+                            td.textContent="match date"
+                            tr.appendChild(td)
+                            var td= document.createElement('td');
+                            td.textContent="Team1"
+                            tr.appendChild(td)
+                            var td= document.createElement('td');
+                            td.textContent="v/s"
+                            tr.appendChild(td)
+                            var td= document.createElement('td');
+                            td.textContent="Team2"
+                            tr.appendChild(td)
+                            table.appendChild(tr);
+                            // Create rows
+                            for (var i = 0; i < numRows; i++) 
+                            {
+                                var tr = document.createElement('tr');
+                                data.rem_matches.forEach(function(col) 
+                                {
+                                    var td = document.createElement('td');
+                                    td.textContent = col[i]; // Get the element at the current row index
+                                    tr.appendChild(td);
+                                }); 
+                                table.appendChild(tr);
+                            }
+                            remain.appendChild(table); // Append the table to the result div
+                        }
+                        var nextl = document.getElementById('nextstep');
+                        nextl.innerHTML = '';
+                        // Display the date range instruction message
+                        if (data.rem_matches.length > 0) 
+                        {
+                            window.open(`/newpage?selected_date=${encodeURIComponent(selectedDate)}`, '_blank');
+                        }
+                    })    
+                    .catch(error => console.error('Error:', error));
+                } 
+                else 
+                {
+                    document.getElementById('remaining').innerHTML = '';  // Clear results if no value selected
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

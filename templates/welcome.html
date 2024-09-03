@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+<style>
+    body,html{
+            margin: 0;
+            padding: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url("https://www.shutterstock.com/image-vector/night-cricket-stadium-illustration-vector-600nw-2160100275.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            color: #333;
+        }
+    header{
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+    }
+</style>
+{% block content1 %}
+<header>
+    <h1>welcome to crrc checker<h1>
+</header>
+{% endblock %}
+{% block content2 %}
+<h3>ABOUT</h3>
+            <p>Welcome to the IPL Tournament checker! Dive into the thrilling world of the Indian Premier League with our comprehensive platform. Explore upcoming matches, stay updated on team standings, and delve into exciting qualification scenarios. Our real-time data and detailed insights provide you with everything you need to follow your favorite teams and predict their chances of progressing in the tournament. Stay informed, stay engaged, and enjoy the IPL with our user-friendly and powerful tracker!</p>
+
+<a href="/demotest" type="button" style="border-radius: 10%;background-color: grey; color: white;padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;font-size: 15px;" type="submit">click here to take a demo</a>
+{% endblock %}

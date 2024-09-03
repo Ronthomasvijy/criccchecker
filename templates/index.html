@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction Page</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to the Introduction Page</h1>
+        <p>This is an introductory section.</p>
+        <label for="contentSelect">Select content:</label>
+        <select id="contentSelect">
+            <option value="">--Please choose an option--</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+    <div id="result">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById('contentSelect').addEventListener('change', function() {
+            var selectedValue = this.value;
+            if (selectedValue) {
+                fetch('/get_content', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'option=' + selectedValue
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = '';
+                    if (data.length > 0) {
+                        var ul = document.createElement('ul');
+                        data.forEach(function(item) {
+                            var li = document.createElement('li');
+                            li.textContent = item;
+                            ul.appendChild(li);
+                        });
+                        resultDiv.appendChild(ul);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                document.getElementById('result').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
