@@ -533,6 +533,8 @@ def get_rem(date_entered):
             output_string_list[3].append(row['team_name2'])
     return output_string_list
 
+# part below is for testing functions.
+
 
 # output_here = get_table()
 # for i in range(len(output_here[0])):
