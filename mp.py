@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime, date
-from test import extract_team_names_from_string, extract_team_names
+from team_name_obtain import extract_team_names_from_string, extract_team_names
 from getmatch import get_winners
 
 url_2008 = 'https://www.espncricinfo.com/series/indian-premier-league-2007-08-313494/match-schedule-fixtures-and-results'

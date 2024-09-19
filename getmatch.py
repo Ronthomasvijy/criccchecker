@@ -4,7 +4,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime, date
-from test import extract_team_names_from_string, extract_team_names
+from team_name_obtain import extract_team_names_from_string, extract_team_names
 
 url_2008 = 'https://www.cricbuzz.com/cricket-series/2058/indian-premier-league-2008/matches'
 url_2009 = 'https://www.cricbuzz.com/cricket-series/2059/indian-premier-league-2009/matches'
