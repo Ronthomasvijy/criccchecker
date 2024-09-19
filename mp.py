@@ -55,13 +55,13 @@ _year = [ur_2008, ur_2009, ur_2010, ur_2011, ur_2012, ur_2013, ur_2014, ur_2015,
          ur_2016, ur_2017, ur_2018, ur_2019, ur_2020, ur_2021, ur_2022, ur_2023, ur_2024]
 
 
-
+#returning link of match details
 def s_year(i):
     i = i-2008
     if i < len(match_year):
         return match_year[i]
 
-
+#scraping match details
 def get_matches(url):
     matches = []
     webpage = requests.get(url)
@@ -73,7 +73,7 @@ def get_matches(url):
         matches.append(i.text)
     return matches
 
-
+#scraping match dates
 def get_dates(url):
     matches = []
     prev = ""
@@ -105,6 +105,7 @@ def find_present_substring(main_string, substring1, substring2):
     else:
         return "NO RESULT"
 
+#if match year is 2021 match details is brought from 2021.csv
 def add_to_csv_2021():
     with open('2021.csv', mode='r', newline='', encoding='utf-8') as infile:
         reader1 = csv.reader(infile)
@@ -118,6 +119,9 @@ def add_to_csv_2021():
                 writer.writerow(row)
     print(f"Data has been written to data.csv")
 
+
+
+#entering scraped details to data.csv file
 def add_to_csv(filename, matches, dates, winners):
     j = 0
     filename = "data.csv"
@@ -138,7 +142,6 @@ def add_to_csv(filename, matches, dates, winners):
     for i in range(len(matches)):
         print("---------------------------------------------------------------------------------------------------------")
 
-        # print(winners[j], "------>")
         print(i+1, matches[i])
 
         dict_match["match_no"].append(i+1)
@@ -156,15 +159,12 @@ def add_to_csv(filename, matches, dates, winners):
             dict_match['team_name1'].append(t1)
             print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             print(t1)
-            # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             t2 = extracted_team_names[1]
             dict_match['team_name2'].append(t2)
             print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             print(t2)
-            # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             while winners[j] == "Match rescheduled due to Covid-19 pandemic" or winners[j] == "Match postponed due to Covid-19 pandemic":
                 j = j+1
-            # print("j is", j)
             vic = find_present_substring(winners[j], t1, t2)
             if vic == "NO RESULT":
                 full_name = t1+" "+t2
@@ -177,7 +177,6 @@ def add_to_csv(filename, matches, dates, winners):
             dict_match['victory'].append(vic)
             print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             print(vic)
-            # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
 
             target_pattern1 = r"T:(\d+)"
             t = re.findall(target_pattern1, matches[i])
@@ -186,7 +185,6 @@ def add_to_csv(filename, matches, dates, winners):
                 dict_match['target'].append(tar)
                 print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 print(tar)
-                # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 ov_pattern1 = r"\(([\d\.]+\/\d+ ov)"
                 ov_pattern2 = r"\((\d+ ov)"
                 overs = re.findall(ov_pattern1, matches[i])
@@ -196,7 +194,6 @@ def add_to_csv(filename, matches, dates, winners):
                 overs.extend(overs2)
                 print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 print(overs)
-                # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 if len(overs) != 2:
                     ov1 = "20/20 ov"
                     ov2 = overs[0]
@@ -243,7 +240,6 @@ def add_to_csv(filename, matches, dates, winners):
                 dict_match['overs_batted2'].append(ov2)
                 print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 print(ov1, "    ---    ", ov2)
-                # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 score_pattern1 = r'\)\s(\d+(/\d+)?)'
                 score_pattern2 = r'[a-zA-Z](\d+(/\d+)?)[a-zA-Z]'
                 matches1 = re.findall(score_pattern1, matches[i])
@@ -260,7 +256,6 @@ def add_to_csv(filename, matches, dates, winners):
                 dict_match['score2'].append(cleaned_matches1[1])
                 print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
                 print(cleaned_matches1[0], "          ", cleaned_matches1[1])
-                # print(r"{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}")
             else:
                 dict_match["dls_affected"].append(False)
                 dict_match['target'].append(None)
@@ -289,17 +284,11 @@ def add_to_csv(filename, matches, dates, winners):
             vic = find_present_substring(winners[j], t1, t2)
             dict_match['victory'].append(vic)
         j = j+1
-    # print(dict_match)
-    # for key in dict_match:
-    # print(key, " ----- >    ")
-    # print(len(dict_match[key]), "----->")
-    # print(dict_match[key], "\n")
+    
     df = pd.DataFrame(dict_match)
-    # print(df)
     file_path = os.path.join(os.getcwd(), filename)
 
     try:
-        # Save the DataFrame to a CSV file
         df.to_csv(file_path, index=False)
         print(f"Data has been written to {file_path}")
     except PermissionError as e:
@@ -307,6 +296,9 @@ def add_to_csv(filename, matches, dates, winners):
     except Exception as e:
         print(f"An error occurred: {e}")
         df.to_csv(filename, index=False)
+
+#code for testing functions
+
 
 
 # yearrr = int(input("enter year:"))
