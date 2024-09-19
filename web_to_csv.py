@@ -6,7 +6,7 @@ import os
 import re
 from datetime import datetime, date
 from team_name_obtain import extract_team_names_from_string, extract_team_names
-from getmatch import get_winners
+from getmatch_winners import get_winners
 
 url_2008 = 'https://www.espncricinfo.com/series/indian-premier-league-2007-08-313494/match-schedule-fixtures-and-results'
 url_2009 = 'https://www.espncricinfo.com/series/indian-premier-league-2009-374163/match-schedule-fixtures-and-results'

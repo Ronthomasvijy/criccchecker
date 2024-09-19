@@ -72,6 +72,16 @@ def nextmatch_update(win,flag,result2, first_batting, second_batting, score1, sc
 
     return output_string_list, sorted_d
 
+
+
+
+
+#code given below is used for testing the functions.
+
+
+
+
+
 # output_here = get_table()
 # for i in range(len(output_here[0])):
 #     print(output_here[0][i], "\t\t", output_here[1][i], "\t", output_here[2][i], "\t",

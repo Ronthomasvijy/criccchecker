@@ -1,6 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from web_to_csv import get_matches, s_year, add_to_csv, find_present_substring, get_dates, add_to_csv_2021
-from getmatch import get_winners, s_myear
+from getmatch_winners import get_winners, s_myear
 from c_table import get_table, get_ptable, get_date_from_to, get_rem,convert_dict_to_list,convert_list_to_dict
 from updatetable import nextmatch_update
 import json
@@ -92,14 +92,6 @@ def submit_data():
     print(output_radio,"          ",matchindex,"              ",first_bat,"               ",second_bat)
     print("\n","          ",score1,"           ",score2,"             ",overs1,"           ",overs2,"            ")
 
-
-
-
-
-
-
-
-    
     # rem=request.form.get('rem_matches')
     # first_bat = request.form.get('first_bat')
     # second_bat = request.form.get('second_bat')
@@ -138,30 +130,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-# from flask import Flask, render_template, request, jsonify
-
-# app = Flask(__name__)
-
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-
-# @app.route('/get_content', methods=['POST'])
-# def get_content():
-#     selected_option = request.form.get('option')
-#     # Perform your calculations here based on the selected_option
-#     if selected_option == 'option1':
-#         result = ['Item 1.1', 'Item 1.2', 'Item 1.3']
-#     elif selected_option == 'option2':
-#         result = ['Item 2.1', 'Item 2.2', 'Item 2.3']
-#     elif selected_option == 'option3':
-#         result = ['Item 3.1', 'Item 3.2', 'Item 3.3']
-#     else:
-#         result = []
-#     return jsonify(result)
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
