@@ -53,8 +53,7 @@ ur_2023 = 'https://www.cricbuzz.com/cricket-series/5945/indian-premier-league-20
 ur_2024 = 'https://www.cricbuzz.com/cricket-series/7607/indian-premier-league-2024/matches'
 _year = [ur_2008, ur_2009, ur_2010, ur_2011, ur_2012, ur_2013, ur_2014, ur_2015,
          ur_2016, ur_2017, ur_2018, ur_2019, ur_2020, ur_2021, ur_2022, ur_2023, ur_2024]
-# , e173/6 , ) 153, s181/5, s89 ,) 153
-# write a code for identifying all these kind of patterns in a string
+
 
 
 def s_year(i):
